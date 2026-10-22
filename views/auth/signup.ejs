@@ -1,0 +1,73 @@
+
+<!-- Breadcrumb Area start -->
+<section class="breadcrumb-area" style="background-image: url(/public/frontend/assets/images/breadcrumb-bg/breadcrumb-bg.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-content">
+                    <h1 class="breadcrumb-hrading">Sign Up</h1>
+                    <ul class="breadcrumb-links">
+                        <li><a href="/">Home</a></li>
+                        <li>Sign Up</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<!-- login area start -->
+<div class="login-register-area mb-60px mt-53px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 mx-auto">
+                <form action="/signup" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="">First Name</label>
+                                <input type="text" name="firstName" placeholder="First Name" class='form-control'/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="">Last Name</label>
+                                <input type="text" name="lastName" placeholder="Last Name" class='form-control'/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="">Username</label>
+                                <input type="text" name="userName" placeholder="Username" class='form-control'/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="">Email</label>
+                                <input type="email" name="email" placeholder="Email" class='form-control'/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="">Password</label>
+                                <input type="password" name="password" placeholder="Password" class='form-control'/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="">Confirm Password</label>
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" class='form-control'/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- login area end -->

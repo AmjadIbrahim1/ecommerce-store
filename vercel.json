@@ -1,0 +1,19 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "framework": null,
+    "rewrites": [
+        {
+            "source": "/public/:path*",
+            "destination": "/:path*"
+        },
+        {
+            "source": "/((?!api/).*)",
+            "destination": "/api"
+        }
+    ],
+    "functions": {
+        "api/index.js": {
+            "includeFiles": "views/**/*"
+        }
+    }
+}

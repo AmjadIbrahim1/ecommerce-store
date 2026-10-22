@@ -1,0 +1,15 @@
+# upload menually
+public/uploads
+public/frontend/assets/images
+public/backend/assets/media
+
+# folders
+node_modules
+
+# files
+.env
+.env.production
+yarn.lock
+.vercel
+*.zip
+yarn-error.log

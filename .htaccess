@@ -1,0 +1,12 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+RewriteEngine On RewriteCond %{REQUESTFILENAME} !-f RewriteCond %{REQUESTFILENAME} !-d RewriteRule ^(.*)$ $1.html [L,QSA]
+PassengerAppRoot "/home/toinfini/ecolife.toinfinite.dev"
+PassengerBaseURI "/"
+PassengerNodejs "/home/toinfini/nodevenv/ecolife.toinfinite.dev/16/bin/node"
+PassengerAppType node
+PassengerStartupFile app.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

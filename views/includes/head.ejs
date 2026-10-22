@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="_csrf" content="<%= _csrf %>">
+    
+    <title><%= title %></title>
+    <link rel="shortcut icon" type="image/x-icon" href="/public/frontend/assets/images/favicon/favicon.png" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/frontend/assets/css/all.min.css">
+    <link rel="stylesheet" href="/public/frontend/assets/css/plugins/fontawesome-stars.css">
+
+    <link rel="stylesheet" href="/public/frontend/assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="/public/frontend/assets/css/plugins/owl-carousel.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <% if ( process.env.NODE_ENV === 'production') { %>
+        <link rel="stylesheet" href="/public/frontend/assets/css/style.min.css">
+        <link rel="stylesheet" href="/public/frontend/assets/css/responsive.min.css">
+        <link rel="stylesheet" href="/public/frontend/assets/css/custom.min.css">
+    <% } else { %>
+        <link rel="stylesheet" href="/public/frontend/assets/css/style.css">
+        <link rel="stylesheet" href="/public/frontend/assets/css/responsive.css">
+        <link rel="stylesheet" href="/public/frontend/assets/css/custom.css">
+    <% } %>
+
+
+    <!--===== Main Css Files =====-->
+    <!-- <link rel="stylesheet" href="/public/frontend/assets/css/style.css" /> -->
+    <!-- ===== Responsive Css Files ===== -->
+    <!-- <link rel="stylesheet" href="/public/frontend/assets/css/responsive.css" /> -->
+</head>
+
+<body class="home-4">
+    <!-- main layout start from here -->
+    <!--====== PRELOADER PART START ======-->
+
+    <!-- <div id="preloader">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+        </div>
+    </div> -->

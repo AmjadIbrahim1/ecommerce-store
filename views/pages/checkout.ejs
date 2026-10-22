@@ -1,0 +1,72 @@
+<!-- Breadcrumb Area start -->
+<section class="breadcrumb-area" style="background-image: url(/public/frontend/assets/images/breadcrumb-bg/breadcrumb-bg.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-content">
+                    <h1 class="breadcrumb-hrading">Checkout</h1>
+                    <ul class="breadcrumb-links">
+                        <li><a href="/">Home</a></li>
+                        <li>Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<div class="container mt-4">
+    <%- include('../includes/flash-message') %> 
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h4 class="mb-3">Shipping Address</h4>
+            <form action="/checkout" method="post">
+                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                <div class="form-group mb-2">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="<%= `${user.firstName} ${user.lastName}` %>">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="<%= user.email %>">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="phone">Phone</label>
+                    <input type="number" class="form-control" id="phone" name="phone" value="<%= user.phone %>" pattern="(\+88)?01[5789][0-9]{8}" title="Phone Number without space">
+                </div>
+                <!-- divisions -->
+                <div class="form-group mb-2">
+                    <label for="division">Division</label>
+                    <select name="division" id="division" class="division-list form-control">
+                        <option selected disabled>Select division</option>
+                    </select>
+                </div>
+                <!-- districts -->
+                <div class="form-group mb-2">
+                    <label for="district">District</label>
+                    <select name="district" id="district" class="district-list form-control">
+                        <option selected disabled>Select district</option>
+                    </select>
+                </div>
+                <!-- Upazilla -->
+                <div class="form-group mb-2">
+                    <label for="upazilla">Upazilla</label>
+                    <select name="upazilla" id="upazilla" class="upazilla-list form-control">
+                        <option selected disabled>Select Upazilla</option>
+                    </select>
+                </div>
+                <!-- address -->
+                <div class="form-group mb-2">
+                    <label for="address">Address</label>
+                    <textarea name="address" id="address" class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Proceed to Pay</button>
+            </form>
+        </div>
+    </div>
+</div>

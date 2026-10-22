@@ -1,0 +1,89 @@
+<!--begin::List Widget 5-->
+<div class="card card-xxl-stretch mb-8">
+    <!--begin::Header-->
+    <div class="card-header align-items-center border-2 mt-4">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="fw-bolder mb-2 text-dark">
+                Manage Banners
+            </span>
+        </h3>
+
+        <!-- begin::card toolbar -->
+        <div class="card-toolbar">
+            <!--begin::Menu-->
+            <a href="/<%= process.env.ADMIN_PANEL_PATH %>/banner/add" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end" title="Add Banner">
+                <!--begin::Svg Icon -->
+                <span class="svg-icon svg-icon-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"></rect>
+                        <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1"></rect>
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+            </a>
+            <!--end::Menu-->
+        </div>
+        <!-- end::card toolbar -->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-5">
+        <% if (data.banners.length <= 0) { %> 
+        <h2 class="text-danger">No Banner Found</h2>
+        <% } else { %> 
+        <div class="row">
+            <% data.banners.forEach(banner => { %> %> 
+            <div class="col-md-4">
+                <!-- begin::banner card -->
+                <div class="banner-card">
+                    <div class="banner-card__icon">
+                        <button type="button" class="btn btn-active-light-primary btn-color-primary btn-icon btn-light btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+                            <!--begin::Svg Icon-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
+                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
+                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
+                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </button>
+
+                        <!--begin::Menu 1-->
+                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <a href="<%= `/${process.env.ADMIN_PANEL_PATH}/banner/edit?bannerId=${banner._id}` %>" class="menu-link px-3">Edit</a>
+                            </div>
+                            <!--end::Menu item-->
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <form class="delete-banner-form">
+                                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                    <input type="hidden" name="_id" value="<%= banner._id %>">
+                                    <button type="submit" class="menu-link px-3">Delete</button>
+                                </form>
+                            </div>
+                            <!--end::Menu item-->
+                        </div>
+                        <!--end::Menu 1-->
+                    </div>
+
+                    <img src="/<%= banner.image %>" alt="" class="banner-card__image">
+                    <a href="" class="banner-card__link">
+                        <h3 class="banner-card__heading"><%= banner.heading %></h3>
+                    </a>
+                    <p class="banner-card__text"><%= banner.text %></p>
+                </div>
+                <!-- end::banner card -->
+            </div>
+            <% }) %> 
+        </div>
+        <% } %> 
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end: List Widget 5-->

@@ -1,0 +1,82 @@
+<!-- Product Single Item -->
+<article class="featured-product">
+    <ul class="product-flag">
+        <li class="new"><%= product.flag.toUpperCase() %></li>
+    </ul>
+    <div class="row">
+        <div class="img-block col-12 col-sm-5">
+            <a href="/product/<%= product.slug %>" class="thumbnail">
+                <img class="first-img" src="/<%= product.images[0].normal %>" alt="" />
+                <img class="second-img" src="/<%= product.images[1]?.normal %>" alt="" />
+            </a>
+            <ul class="add-to-link">
+                <li>
+                    <form action="/add-to-cart" method="post">
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <button type="submit" title="Add to Cart" class='add-to-link__item'>
+                            <ion-icon name="bag-add-outline"></ion-icon>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <% formUrl = '/add-to-wishlist' %>
+                    <% text = 'Add to Wishlist' %> 
+                    <% icon = 'heart-outline' %>
+                    <% if (user?.wishList?.includes(product._id.toString())) { %>
+                        <% formUrl = '/remove-from-wishlist' %>
+                        <% text = 'Remove from Wishlist' %>
+                        <% icon = 'heart' %>
+                    <% } %>
+
+                    <form action="<%= formUrl %>" method="post">
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <button type="submit" title="wishlist" class='add-to-link__item'>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <a href="#" class='add-to-link__item product-quick-view' data-productId="<%= product._id %>"><ion-icon name="eye-outline"></ion-icon></a>
+                </li>
+            </ul>
+        </div>
+        <div class="product-decs col-12 col-sm-7">
+            <a class="inner-link" href="/category/<%= product.categories[0].slug %>"><span><%= product.categories[0].name %></span></a>
+            <h2>
+                <a href="/product/<%= product.slug %>" class="product-link"><%= product.title %></a>
+            </h2>
+            <div class="rating-product">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <span>(<%= product.totalSale %>)</span>
+            </div>
+            <div class="pricing-meta">
+                <ul>
+                    <% if (product.discount) { %>
+                        <li class="old-price">BDT <%= product.price %></li>
+                        <li class="current-price">BDT <%= Math.round(product.price - product.price * product.discount / 100) %></li>
+                        <li class="discount-price">-<%= product.discount %>%</li>
+                    <% } else { %>
+                        <li class="current-price">BDT <%= product.price %></li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <% if (product.inStock > 0) { %>
+                <div class="in-stock mt-3">Availability: <span><%= product.inStock %> In Stock</span></div>
+            <% } else { %>
+                <div class="in-stock mt-3">Availability: Out Of Stock</div>
+            <% } %> 
+            <div class="clockdiv">
+                <div class="title_countdown me-3">Hurry Up! <br /> Offers ends in:</div>
+                <div data-countdown="2021/09/01"></div>
+            </div>
+        </div>
+    </div>
+</article>
+<!-- Product Single Item -->

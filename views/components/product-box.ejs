@@ -1,0 +1,67 @@
+<!-- Single Item -->
+<div class="category-item list-product border-0 mb-0">
+    <div class="category-list">
+        <div class="category-thumb img-block">
+            <a href="<%= `/product/${product.slug}` %>">
+                <img src="<%= '/'+product.images[0].normal %>" alt="<%= product.shortDescription %>" height="260" width="230">
+            </a>
+            <div class="quick-view">
+                <a class="quick_view product-quick-view" href="#" data-productId="<%= product._id %>">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </a>
+            </div>
+            <% if(product.flag) { %>
+                <ul class="product-flag">
+                    <li class="new"><%= product.flag %></li>
+                </ul>
+            <% } %>
+        </div>
+        <div class="product-decs p-0">
+            <a class="inner-link" href="<%= `/category/${product.categories[0].slug}` %>"><span><%= product.categories[0].name %></span></a>
+            <h2>
+                <a href="<%= `/product/${product.slug}` %>" class="product-link"><%= product.title.substring(0, 50) %></a>
+            </h2>
+            <%- include('../includes/rating', {rating: product.rating, text: product.reviews.length}) %> 
+
+            <div class="pricing-meta">
+                <ul>
+                    <% if (product.discount > 0) { %>
+                        <li class="old-price">BDT <%= product.price %></li>
+                    <% }%>
+                    <li class="current-price">BDT <%= Math.round(product.price - product.price * product.discount / 100) %></li>
+                    <% if (product.discount > 0) { %>
+                        <li class="discount-price"> - <%= product.discount%>%</li>
+                    <% }%>
+                </ul>
+            </div>
+        </div>
+        <div class="add-to-link">
+            <ul>
+                <li class="cart">
+                    <form action="/add-to-cart" method="post">
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <button type="submit" class="cart-btn">ADD TO CART </button>
+                    </form>
+                </li>
+                <li>
+                    <% formUrl = '/add-to-wishlist' %>
+                    <% text = 'Add to Wishlist' %> 
+                    <% icon = 'heart-outline' %>
+                    <% if (user?.wishList?.includes(product._id.toString())) { %>
+                        <% formUrl = '/remove-from-wishlist' %>
+                        <% text = 'Remove from Wishlist' %>
+                        <% icon = 'heart' %>
+                    <% } %>
+                    
+                    <form action="<%= formUrl %>" method="post">
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <button type="submit" class="bg-transparent border-0 fs-5" title="<%= text %>"><ion-icon name="<%= icon %>"></ion-icon></button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Single Item -->

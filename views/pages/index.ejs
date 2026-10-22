@@ -1,0 +1,18 @@
+
+<%- include('../components/banner', {banners: data.banners}) %> 
+<%- include('../components/eCom-features') %>
+<div class="container">
+    <% if (unverifiedEmail) { %>
+        <div class="alert alert-warning">
+            Your email is not verified. Please verify and activate your account.
+            <a href="/activate-email-request">Send email</a>
+        </div>
+    <% } else { %>
+        <%- include('../includes/flash-message') %> 
+    <% } %>
+</div>
+<%- include('../components/ads', {ads: data.ads}) %> 
+<%- include('../components/best-selling', {bestSellingProducts: data.bestSellingProducts}) %> 
+<%- include('../components/featured-products', {featuredProducts: data.featuredProducts}) %> 
+<%- include('../components/new-arrival', {newArrivals: data.newArrivals}) %> 
+<%# include('../components/brand.ejs') %> 

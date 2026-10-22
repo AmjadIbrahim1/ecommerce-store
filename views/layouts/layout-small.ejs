@@ -1,0 +1,14 @@
+<%- include('../includes/head', { title: title }) %> 
+
+<div id="main">
+    <!-- Header Start -->
+    <header class="main-header home-2">
+        <%# include('../components/navbar/top-nav') %> 
+        <%# include('../components/navbar/main-nav') %> 
+    </header>
+    <!-- Header End -->
+
+    <%- include(`../${page}`) %> 
+</div>
+
+<%- include('../includes/end', { path: path }) %> 

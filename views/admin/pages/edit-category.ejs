@@ -1,0 +1,80 @@
+<!--begin::List Widget 5-->
+<div class="card card-xxl-stretch mb-8">
+    <!--begin::Header-->
+    <div class="card-header align-items-center border-2 mt-4">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="fw-bolder mb-2 text-dark"><%= data.editMode ? 'Edit' : 'Add' %> Category</span>
+        </h3>
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-5">
+        <form id="add-category-form" action="<%= `/${process.env.ADMIN_PANEL_PATH}/category/${data.editMode ? 'edit' : 'add'}` %>">
+            <input type="hidden" name="_csrf" value="<%= _csrf %>">
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-5">
+                    <% if (data.editMode) { %>
+                        <input type="hidden" name="categoryId" value="<%= data.category._id %>">
+                    <% } %>
+                    <div class="fv-row mb-5">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control form-control-solid" placeholder="Name" name="name"
+                            value="<%= data.category?.name %>" />
+                    </div>
+
+                    <div class="fv-row mb-5">
+                        <label class="form-label">Label of Category</label>
+                        <select name="label" class="form-select form-select-solid" data-control="select2"
+                            data-hide-search="true" id="category-label">
+                            <option <%= data.category?.label === 'main' && 'selected' %> value="main">Main Category</option>
+                            <option <%= data.category?.label === 'sub' && 'selected' %> value="sub">Sub Category</option>
+                            <option <%= data.category?.label === 'pro-sub' && 'selected' %> value="pro-sub">Pro-sub Category</option>
+                        </select>
+                    </div>
+
+                    <div class="fv-row mb-5 <% !data.category && 'd-none'%>">
+                        <label class="form-label">Parent</label>
+                        <select name="parent" class="form-select form-select-solid" data-control="select2"
+                            >
+                            <option value="" selected="false">Select Parent</option>
+                            <% if (data.parents?.length > 0) { %>
+                                <% data.parents?.forEach(item => { %>
+                                    <option value="<%= item._id %>" <%= item._id.toString() === data.category.parent._id.toString() && 'selected' %>><%= item.name %></option>
+                                    
+                                <% }) %>
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid fv-row mb-5">
+                        <input class="form-check-input" type="checkbox" name="featuredCategory" id="featuredCategory"/>
+                        <label class="form-check-label" for="featuredCategory">
+                            Featured Category
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid fv-row mb-5 d-none" id="category-image-size">
+
+                        <input name="size" class="form-check-input" type="radio" id="small" value="small" />
+                        <label class="form-check-label me-4" for="small">Small</label>
+
+                        <input name="size" class="form-check-input" type="radio" id="large" value="large" />
+                        <label class="form-check-label" for="large">Large</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <div class="indicator-label">
+                            Add Category
+                        </div>
+                        <div class="indicator-progress">
+                            Submitting... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end: List Widget 5-->

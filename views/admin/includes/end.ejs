@@ -1,0 +1,38 @@
+<!--begin::Javascript-->
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="/public/backend/assets/plugins/global/plugins.bundle.js"></script>
+<script src="/public/backend/assets/js/scripts.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script
+    src="https://cdn.tiny.cloud/1/0ftwjoe5ijsczlktxwqyzkwwkrl3uopfkz8kzs65wefr51u6/tinymce/5/tinymce.min.js"></script>
+<script>
+    const ADMIN_PANEL_PATH = '<%= process.env.ADMIN_PANEL_PATH %>';
+    const path = '<%= path %>';
+</script>
+
+<% if (path ==='/signup' ) { %>
+    <script src="/public/backend/assets/js/signup.js"></script>
+<% } %>
+
+<% if (path ==='/auth/signin' ) { %>
+    <script src="/public/backend/assets/js/login.js"></script>
+<% } %>
+
+<% if (path.startsWith(`/${process.env.ADMIN_PANEL_PATH}/category`)) { %>
+    <script src="/public/backend/assets/js/category.js"></script>
+<% } %>
+
+<script src="/public/backend/assets/js/main.js"></script>
+
+<!--end::Global Javascript Bundle-->
+<!--begin::Page Custom Javascript(used by this page)-->
+<!-- <script src="/public/backend/assets/js/custom/widgets.js"></script> -->
+<!-- <script src="/public/backend/assets/js/custom/apps/chat/chat.js"></script> -->
+<!-- <script src="/public/backend/assets/js/custom/modals/create-app.js"></script> -->
+<!-- <script src="/public/backend/assets/js/custom/modals/upgrade-plan.js"></script> -->
+<!--end::Page Custom Javascript-->
+<!--end::Javascript-->
+</body>
+<!--end::Body-->
+
+</html>

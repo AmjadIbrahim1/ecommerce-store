@@ -1,0 +1,17 @@
+<%- include('../includes/head', { title: title }) %> 
+
+<div id="main">
+    <!-- Header Start -->
+    <header class="main-header home-2">
+        <%- include('../components/navbar/top-nav') %> 
+        <%- include('../components/navbar/main-nav', {categories: data.categories}) %> 
+    </header>
+    <!-- Header End -->
+
+    <%- include(`../${page}`, {data}) %> 
+    
+    <%- include('../components/footer') %> 
+</div>
+<%# include('../modals/productModal', {data: product}) %> 
+
+<%- include('../includes/end', { path: path }) %>

@@ -1,0 +1,119 @@
+
+<!--begin::List Widget 5-->
+<div class="card card-xxl-stretch mb-8">
+    <!--begin::Header-->
+    <div class="card-header align-items-center border-2 mt-4">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="fw-bolder mb-2 text-dark">Products</span>
+        </h3>
+
+        <!-- begin::card toolbar -->
+        <div class="card-toolbar">
+            <!--begin::Menu-->
+            <a href="/<%= process.env.ADMIN_PANEL_PATH %>/product/add"
+                class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click"
+                data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end" title="Add Banner">
+                <!--begin::Svg Icon -->
+                <span class="svg-icon svg-icon-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1">
+                        <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"></rect>
+                        <rect fill="#000000" opacity="0.5"
+                            transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)"
+                            x="4" y="11" width="16" height="2" rx="1"></rect>
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+            </a>
+            <!--end::Menu-->
+        </div>
+        <!-- end::card toolbar -->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-5">
+        <div class="table-responsive">
+            <table class='table table-hover table-row-gray-300 align-middle gs-0 gy-4'>
+                <thead>
+                    <tr class="fw-bolder text-muted bg-light">
+                        <th class='min-w-200px ps-4 rounded-start'>Name</th>
+                        <th class='min-w-70px'>Price</th>
+                        <th class='min-w-70px'>Discount</th>
+                        <th class='min-w-70px'>Total Sale</th>
+                        <th class='min-w-70px'>Rating</th>
+                        <th class='min-w-30px'>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                    <path d="M12,18 L7.91561963,20.1472858 C7.42677504,20.4042866 6.82214789,20.2163401 6.56514708,19.7274955 C6.46280801,19.5328351 6.42749334,19.309867 6.46467018,19.0931094 L7.24471742,14.545085 L3.94038429,11.3241562 C3.54490071,10.938655 3.5368084,10.3055417 3.92230962,9.91005817 C4.07581822,9.75257453 4.27696063,9.65008735 4.49459766,9.61846284 L9.06107374,8.95491503 L11.1032639,4.81698575 C11.3476862,4.32173209 11.9473121,4.11839309 12.4425657,4.36281539 C12.6397783,4.46014562 12.7994058,4.61977315 12.8967361,4.81698575 L14.9389263,8.95491503 L19.5054023,9.61846284 C20.0519472,9.69788046 20.4306287,10.2053233 20.351211,10.7518682 C20.3195865,10.9695052 20.2170993,11.1706476 20.0596157,11.3241562 L16.7552826,14.545085 L17.5353298,19.0931094 C17.6286908,19.6374458 17.263103,20.1544017 16.7187666,20.2477627 C16.5020089,20.2849396 16.2790408,20.2496249 16.0843804,20.1472858 L12,18 Z" fill="#000000"/>
+                                </g>
+                            </svg>
+                        </th>
+                        <th class='min-w-90px rounded-end'>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data.products.length > 0) { %>
+                        <% data.products.forEach(product => { %>
+                            <tr>
+                                <td class='rounded-start ps-4'><%= product.title %></td>
+                                <td><%= product.price %></td>
+                                <td><%= product.discount %>%</td>
+                                <td><%= product.totalSale %></td>
+                                <td><%= product.rating %></td>
+                                <td>
+                                    <form action="<%= `/${process.env.ADMIN_PANEL_PATH}/product/featured` %>" class="make-featured-product">
+                                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+
+                                        <button type="submit" class='btn btn-white'>
+                                            <% if (product.featured) { %>
+                                                <i class="bi bi-star-fill"></i>
+                                            <% } else { %>
+                                                <i class="bi bi-star"></i>
+                                            <% } %>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td class='rounded-end'>
+                                    <a href="/<%= process.env.ADMIN_PANEL_PATH %>/product/edit?productId=<%= product._id %>" class="btn btn-icon btn-bg-light btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.25" x="3" y="21" width="18" height="2" rx="1" fill="#191213"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.08576 11.5L3.58579 12C3.21071 12.375 3 12.8838 3 13.4142V17C3 18.1045 3.89543 19 5 19H8.58579C9.11622 19 9.62493 18.7893 10 18.4142L10.5 17.9142L4.08576 11.5Z" fill="#121319"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 10.0858L11.5858 4L18 10.4142L11.9142 16.5L5.5 10.0858Z" fill="#121319"/>
+                                                <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M18.1214 1.70705C16.9498 0.535476 15.0503 0.535476 13.8787 1.70705L13 2.58576L19.4142 8.99997L20.2929 8.12126C21.4645 6.94969 21.4645 5.0502 20.2929 3.87862L18.1214 1.70705Z" fill="#191213"/>
+                                                </svg>
+                                        </span>
+                                    </a>
+                                    <form action="/<%= process.env.ADMIN_PANEL_PATH %>/product/delete" class='d-inline-block delete-product'>
+                                        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                        <input type="hidden" name="productId" value="<%= product._id %>" />
+                                        <button type="submit" class="btn btn-icon btn-bg-light-danger btn-active-light-danger w-30px h-30px w-md-40px h-md-40px">
+                                            <span class="svg-icon svg-icon-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>
+                                                        <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
+                                    
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan='7' class='text-center py-4 fs-1'>No Product Found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end: List Widget 5-->

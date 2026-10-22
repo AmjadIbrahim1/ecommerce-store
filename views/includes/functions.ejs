@@ -1,0 +1,6 @@
+<%
+    discount = (price, percentage) => {
+        const discountPrice = (price - price * percentage / 100).toFixed(2);
+        return discountPrice;
+    }
+%>

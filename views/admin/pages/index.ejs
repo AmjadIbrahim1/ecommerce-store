@@ -1,0 +1,7 @@
+
+<%- include('../components/statistics') %>
+<% if (data.adminRequest.length > 0 ) { %>
+    <%- include('../components/new-admin', {adminRequest: data.adminRequest}) %>
+<% } %>
+<%- include('../components/activities') %>
+<%- include('../components/top-products') %>

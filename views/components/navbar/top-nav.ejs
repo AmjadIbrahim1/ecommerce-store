@@ -1,0 +1,39 @@
+<!-- Header Top Start -->
+<div class="header-top-nav d-none d-md-block">
+    <div class="container">
+        <div class="row">
+            <!--Left Start-->
+            <div class="col-lg-4 col-md-4">
+                <div class="left-text">
+                    <p>Welcome you to Amjad store!</p>
+                </div>
+            </div>
+            <!--Left End-->
+            <!--Right Start-->
+            <div class="col-lg-8 col-md-8 text-right">
+                <div class="header-right-nav">
+                    <ul class="res-xs-flex">
+                        <li class="after-n">
+                            <a href="/wishlist" class='d-flex align-items-center'><ion-icon name="heart" class="fs-5 me-1"></ion-icon>Wishlist (<%= user?.wishList?.length || 0 %>)</a>
+                        </li>
+                        <li>
+                            <% if (user) { %>
+                                <form action="/signout" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                    <button type="submit" class='align-items-center bg-transparent border-0 d-flex text-light'>
+                                        <ion-icon name="log-out" class="fs-5 me-1"></ion-icon>
+                                        Log Out
+                                    </button>
+                                </form>
+                            <% } else { %>
+                                <a href="/signup" class='d-flex align-items-center'><ion-icon name="person-add-sharp" class="fs-6 me-1"></ion-icon>Sign Up</a>
+                            <% } %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--Right End-->
+        </div>
+    </div>
+</div>
+<!-- Header Top End -->

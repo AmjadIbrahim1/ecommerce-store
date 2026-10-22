@@ -1,0 +1,123 @@
+<!-- Breadcrumb Area start -->
+<section class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-content">
+                    <h1 class="breadcrumb-hrading"><%= data.filterQuery.q %></h1>
+                    <ul class="breadcrumb-links">
+                        <li><a href="/">Home</a></li>
+                        <li>Search</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<!-- Shop Category Area End -->
+<div class="shop-category-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
+                <!-- Shop Top Area Start -->
+                <div class="shop-top-bar">
+                    <!-- Left Side start -->
+                    <div class="shop-tab nav mb-res-sm-15">
+                        <p><%= data.searchSpeed %> </p>
+                    </div>
+                    <!-- Left Side End -->
+
+                    <!-- Right Side Start -->
+                    <div class="select-shoing-wrap">
+                        <div class="shot-product">
+                            <p>Sort By:</p>
+                        </div>
+                        <div class="shop-select">
+                            <select>
+                                <option value="">Sort by newness</option>
+                                <option value="">A to Z</option>
+                                <option value=""> Z to A</option>
+                                <option value="">In stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Right Side End -->
+                </div>
+                <!-- Shop Top Area End -->
+
+                <!-- Shop Bottom Area Start -->
+                <div class="shop-bottom-area mt-35">
+                    <!-- Shop Tab Content Start -->
+                    <div class="jump">
+                        <div class="row">
+                            <% data.products.forEach(product => { %>
+                                <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-xs-12">
+                                    <%- include('../components/product-box', {product}) %> 
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <!-- Shop Bottom Area End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="col-lg-3 order-lg-first col-md-12 order-md-last mb-res-md-60px mb-res-sm-60px">
+                <div class="left-sidebar">
+                    <div class="sidebar-heading">
+                        <div class="main-heading">
+                            <h2>Filter By</h2>
+                        </div>
+                        <!-- Sidebar single item -->
+                        <div class="sidebar-widget">
+                            <h4 class="pro-sidebar-title">Categories</h4>
+                            <div class="sidebar-widget-list">
+                                <ul>
+                                    <% data.foundAllCategories.forEach(category => { %>
+                                        <li>
+                                            <div class="sidebar-widget-list-left">
+                                                <a href="" class="add-url-query" data-query-name="category" data-query-value="<%= category.slug %>">
+                                                    <span class="checkmark m-0"></span>
+                                                    <%= category.name %>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Sidebar single item -->
+                    </div>
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget mt-20">
+                        <h4 class="pro-sidebar-title">Price Range</h4>
+                        <div class="price-filter mt-10">
+                            <form class="price-range-form">
+                                <input type="number" name="min" placeholder="Min" value="<%= data.filterQuery.price.min %>">
+                                <input type="number" name="max" placeholder="Max" value="<%= data.filterQuery.price.max %>" class="mx-1">
+                                <button type="submit" class="button--icon"><i class="fas fa-play"></i></button>
+                            </form>
+                            <div id="slider-range"></div>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget tag mt-30">
+                        <div class="main-heading">
+                            <h2>Tags</h2>
+                        </div>
+                        <div class="sidebar-widget-tag">
+                            <ul>
+                                <% data.filterQuery.foundTags.forEach(tag => { %>
+                                    <li><a href="" class="add-url-query" data-query-name="tag" data-query-value="<%= tag %>"><%= tag %></a></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                </div>
+            </div>
+            <!-- Sidebar Area End -->
+        </div>
+    </div>
+</div>
+<!-- Shop Category Area End -->

@@ -1,0 +1,21 @@
+<!-- Slider Arae Start -->
+<div class="slider-area home-2 home-4">
+    <div class="slider-active-3 owl-carousel slider-hm8 owl-dot-style">
+
+        <% banners.map(banner => { %>
+        <!-- Slider Single Item Start -->
+        <div class="slider-height-6 d-flex align-items-start justify-content-start bg-img"
+            style="background-image: url('<%= process.env.SERVER_URL %>/<%= banner.image %>');">
+            <div class="container">
+                <div class="slider-content-5 slider-animated-1 text-left" style="max-width: 400px;">
+                    <span class="animated"><%= banner.text %></span>
+                    <h1 class="animated"><%= banner.heading %></h1>
+                    <a href="/category/<%= banner.productCategory %>" class="shop-btn animated">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+        <!-- Slider Single Item End -->
+        <% }) %>
+    </div>
+</div>
+<!-- Slider Arae End -->

@@ -1,0 +1,197 @@
+<%- include('../includes/functions') %>
+
+<!-- Breadcrumb Area start -->
+<section class="breadcrumb-area" style="background-image: url(/public/frontend/assets/images/breadcrumb-bg/breadcrumb-bg.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-content">
+                    <h1 class="breadcrumb-hrading"><%= data.product.title %></h1>
+                    <ul class="breadcrumb-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><%= data.product.categories[0].name %></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<div class="container mt-4">
+    <%- include('../includes/flash-message') %> 
+</div>
+
+<!-- Shop details Area start -->
+<section class="product-details-area mtb-60px">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="product-details-img product-details-tab">
+                    <div class="zoompro-wrap zoompro-2">
+                        <div class="zoompro-border zoompro-span">
+                            <img class="zoompro" src="/<%= data.product.images[0].large %>"
+                                data-zoom-image="/<%= data.product.images[0].extraLarge %>" alt="" />
+                        </div>
+                    </div>
+                    <div id="gallery" class="product-dec-slider-2">
+                        <% data.product.images.forEach(imageSet => { %>
+                            <a class="active" data-image="/<%= imageSet.large %>"
+                                data-zoom-image="/<%= imageSet.extraLarge %>">
+                                <img src="/<%= imageSet.thumb %>" alt="" />
+                            </a>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="product-details-content">
+                    <h2><%= data.product.title %></h2>
+                    <div class="pro-details-rating-wrap">
+                        <%- include('../includes/rating', {rating: data.product.rating, text: data.product.rating}) %>
+                        <span class="read-review"><a href="#"><i class="fal fa-comment-dots"></i> Read reviews (<%= data.product.reviews.length %>)</a></span>
+                    </div>
+                    <div class="pricing-meta">
+                        <ul>
+                            <% if (data.product.discount) { %>
+                                <li class="old-price fs-6">BDT <%= data.product.price %></li>
+                                <li class="current-price fs-3 fw-normal"><%= discount(data.product.price, data.product.discount) %></li>
+                            <% } else { %>
+                                <li class="old-price not-cut">BDT <%= data.product.price %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <p class='mb-4'><%= data.product.shortDescription %></p>
+                    <div class="pro-details-quality mt-0px">
+                        <form action="/add-to-cart" method="post">
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                            <input type="number" name="quantity" value="1" min="1" />
+                            <div class="pro-details-cart btn-hover">
+                                <input type="hidden" name="productId" value="<%= data.product._id %>">
+                                <button type="submit"> Add To Cart</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pro-details-wish-com">
+                        <div class="pro-details-wishlist">
+                            <% formUrl = '/add-to-wishlist' %>
+                            <% buttonText = 'Add To Wishlist' %>
+                            <% buttonIcon = 'heart-outline' %>
+                            <% if (user?.wishList?.includes(data.product._id.toString())) { %>
+                                <% formUrl = '/remove-from-wishlist' %>
+                                <% buttonText = 'Remove From Wishlist' %>
+                                <% buttonIcon = 'heart' %>
+                            <% } %>
+                            <form action="<%= formUrl %>" method="post">
+                                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                <input type="hidden" name="productId" value="<%= data.product._id %>">
+                                <button type="submit" class="align-items-center bg-transparent border-0 d-flex">
+                                    <ion-icon class='me-2' name="<%= buttonIcon %>"></ion-icon>
+                                    <%= buttonText %>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="pro-details-social-info">
+                        <span>Share</span>
+                        <%- include('../components/social-media') %> 
+                    </div>
+                    <div class="pro-details-policy">
+                        <ul>
+                            <li>
+                                <img src="/public/frontend/assets/images/policy.png" alt="" />
+                                <span>Security Policy (Edit With Customer Reassurance Module)</span>
+                            </li>
+                            <li>
+                                <img src="/public/frontend/assets/images/policy-2.png" alt="" />
+                                <span>Delivery Policy (Edit With Customer Reassurance Module)</span>
+                            </li>
+                            <li>
+                                <img src="/public/frontend/assets/images/policy-3.png" alt="" />
+                                <span>Return Policy (Edit With Customer Reassurance Module)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mtb-60px">
+            <div class="description-review-wrapper">
+                <div class="description-review-topbar nav">
+                    <a data-bs-toggle="tab" href="#des-details1" class="active">Description</a>
+                    <a data-bs-toggle="tab" href="#des-details3" class="">Reviews (2)</a>
+                </div>
+                <div class="tab-content description-review-bottom">
+                    <div id="des-details1" class="tab-pane active">
+                        <div class="product-description-wrapper">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                            <p>
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo consequat. Duis aute irure dolor in reprehend in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            </p>
+                        </div>
+                    </div>
+                    <div id="des-details3" class="tab-pane">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="review-wrapper">
+                                    <% if (data.product.reviews.length > 0) { %>
+                                        <% data.product.reviews.forEach(review => { %>
+                                            <div class="single-review">
+                                                <div class="review-content">
+                                                    <div class="mb-2">
+                                                        <%- include('../includes/rating', {rating: review.rating, text: ''}) %> 
+                                                        <p style="font-size: 12px;color: #9b9b9b;">By <span style="text-transform: capitalize;"><%= review.userId?.userName %></span></p>
+                                                    </div>
+    
+                                                    <div class="review-bottom">
+                                                        <p><%= review.description %></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <div class="not-found-box">
+                                            <h4>No Reviews for this product</h4>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="ratting-form-wrapper pl-50 pt-5">
+                                    <h3>Add a Review </h3>
+                                    <div class="ratting-form">
+                                        <form action="/rate-product" method="POST">
+                                            <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                            <input type="hidden" name="productId" value="<%= data.product._id %>">
+                                            <div class="star-box">
+                                                <span>Your rating:</span>
+                                                <select id="bar-rating" name="rating">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                  </select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="rating-form-style form-submit">
+                                                        <textarea name="description" placeholder="Write your review ..."></textarea>
+                                                        <input type="submit" value="Submit">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop details Area End -->

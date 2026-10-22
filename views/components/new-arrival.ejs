@@ -1,0 +1,26 @@
+
+<div class="mt-60">
+    <!-- Best Sells Area Start -->
+    <section class="best-sells-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Section Title -->
+                    <div class="section-title">
+                        <h2>Recently Added</h2>
+                        <p>Add products to weekly line up</p>
+                    </div>
+                    <!-- Section Title -->
+                </div>
+            </div>
+            <!-- Best Sell Slider Carousel Start -->
+            <div class="category-slider-2 owl-carousel owl-nav-style-3 owl-loaded owl-drag">
+                <% newArrivals.map(product => { %>
+                    <%- include('product-box', {product}) %>
+                <% }) %>
+            </div>
+            <!-- Best Sell Slider Carousel End -->
+        </div>
+    </section>
+    <!-- Best Sell Area End -->
+</div>

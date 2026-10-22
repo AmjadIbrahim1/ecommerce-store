@@ -1,0 +1,188 @@
+<!-- Header Buttom Start -->
+<div class="header-navigation sticky-nav">
+    <div class="container">
+        <div class="container-inner">
+            <div class="row">
+                <!-- Logo Start -->
+                <div class="col-auto col-md-2">
+                    <div class="logo">
+                        <a href="/"><img src="/public/frontend/assets/images/logo/logo.jpg" alt="" /></a>
+                    </div>
+                </div>
+                <!-- Logo End -->
+                <!-- Navigation Start -->
+                <div class="col col-md-10">
+                    <!--Main Navigation Start -->
+                    <div class="main-navigation d-none d-lg-block">
+                        <form action="/search" method="get" class="navbar-search" autocomplete="off">
+                            <div class='open-dropdown' data-dropdown-open-on="focus">
+                                <button type="button"
+                                    class='navbar-search__button navbar-search__button--hover dropdown-button me-3'
+                                    id="open-navbar-category">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5"/>
+                                            <path d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284271,10 20,10.6715729 20,11.5 C20,12.3284271 19.3284271,13 18.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z" fill="#000000" opacity="0.3"/>
+                                        </g>
+                                    </svg>
+                                </button>
+
+                                <%- include('../search-categories', {categories: categories}) %> 
+                            </div>
+                            <div class="open-dropdown" data-dropdown-open-on="focus">
+                                <input placeholder="Search here ..." type="text" name="q" id="search-box" class='navbar-search__input' value="<%= q %>" />
+
+                                <div class="dropdown-list w-100" tabindex="0">
+                                    <div class="search-suggestions d-none">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class='navbar-search__button'>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    <!--Main Navigation End -->
+                    <!--Header Bottom Account Start -->
+                    <div class="header_account_area">
+                        <div class="open-dropdown d-md-none">
+                            <a href="javascript:void(0)" class='navbar-icon-button dropdown-button'>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <div class="dropdown-list" id="mobile-search-area">
+                                <form action="#" class="navbar-search">
+                                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                    <input placeholder="Search here ..." type="text" class='navbar-search__input' />
+                                </form>
+                            </div>
+                        </div>
+                        <!--Cart info Start -->
+                        <div class="cart-info d-flex mt-0">
+                            <% if (user) { %>
+                                <div class="mini-cart-warp open-dropdown">
+                                    <a href="javascript:void(0)" class="dropdown-button cart-icon">
+                                        <span class='me-2'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.25" d="M3.19406 11.1644C3.09247 10.5549 3.56251 10 4.18045 10H19.8195C20.4375 10 20.9075 10.5549 20.8059 11.1644L19.4178 19.4932C19.1767 20.9398 17.9251 22 16.4586 22H7.54138C6.07486 22 4.82329 20.9398 4.58219 19.4932L3.19406 11.1644Z" fill="#7E8299"/>
+                                                <path d="M2 9.5C2 8.67157 2.67157 8 3.5 8H20.5C21.3284 8 22 8.67157 22 9.5C22 10.3284 21.3284 11 20.5 11H3.5C2.67157 11 2 10.3284 2 9.5Z" fill="#7E8299"/>
+                                                <path d="M10 13C9.44772 13 9 13.4477 9 14V18C9 18.5523 9.44772 19 10 19C10.5523 19 11 18.5523 11 18V14C11 13.4477 10.5523 13 10 13Z" fill="#7E8299"/>
+                                                <path d="M14 13C13.4477 13 13 13.4477 13 14V18C13 18.5523 13.4477 19 14 19C14.5523 19 15 18.5523 15 18V14C15 13.4477 14.5523 13 14 13Z" fill="#7E8299"/>
+                                                <g opacity="0.25">
+                                                <path d="M10.7071 3.70711C11.0976 3.31658 11.0976 2.68342 10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L4.29289 7.29289C3.90237 7.68342 3.90237 8.31658 4.29289 8.70711C4.68342 9.09763 5.31658 9.09763 5.70711 8.70711L10.7071 3.70711Z" fill="#7E8299"/>
+                                                <path d="M13.2929 3.70711C12.9024 3.31658 12.9024 2.68342 13.2929 2.29289C13.6834 1.90237 14.3166 1.90237 14.7071 2.29289L19.7071 7.29289C20.0976 7.68342 20.0976 8.31658 19.7071 8.70711C19.3166 9.09763 18.6834 9.09763 18.2929 8.70711L13.2929 3.70711Z" fill="#7E8299"/>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <span class='total d-none d-md-block'>BDT <%= user.cart.total %></span>
+                                        <span class="item-quantity-tag"><%= user.cart.items.length %></span>
+                                    </a>
+                                    <div class="mini-cart-content dropdown-list" tabindex="0">
+                                        <% if (user.cart.items.length > 0) { %>
+                                            <ul>
+                                                <% user.cart.items.forEach(item => { %>
+                                                    <% const product = item.productId %>
+                                                    <li class="single-shopping-cart">
+                                                        <div class="shopping-cart-img">
+                                                            <a href="/product/<%= product.slug %>"><img alt="<%= product.title %>"
+                                                                    src="/<%= product.images[0].thumb %>" /></a>
+                                                        </div>
+                                                        <div class="align-items-center d-flex justify-content-between shopping-cart-title">
+                                                            <div>
+                                                                <h4>
+                                                                    <a href="/product/<%= product.slug %>">
+                                                                        <%= product.title.substring(0, 30) %>
+                                                                        <%= product.title.length > 30 && '...' %>
+                                                                    </a>
+                                                                </h4>
+                                                                <span><%= Math.round(product.price - product.price * product.discount / 100) %> x <%= item.quantity %></span>
+                                                            </div>
+                                                            <div class="shopping-cart-delete">
+                                                                <form action="/remove-from-cart" method="post">
+                                                                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                                                    <input type="hidden" name="productId" value="<%= product._id %>">
+                                                                    <button type="submit" class="bg-transparent border-0">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                                            height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                                                fill="#000000">
+                                                                                <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                                                <rect fill="#000000" opacity="0.5"
+                                                                                    transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000) "
+                                                                                    x="0" y="7" width="16" height="2" rx="1" />
+                                                                            </g>
+                                                                        </svg>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <% }) %>
+                                            </ul>
+                                            <div class="shopping-cart-total">
+                                                <p>Subtotal : <span>BDT <%= user.cart.total %></span></p>
+                                                <p>Shipping : <span>BDT 40</span></p>
+                                                <p class="shop-total">Total : <span>BDT <%= user.cart.total + 40 %></span></p>
+                                            </div>
+                                            <div class="shopping-cart-btn text-center">
+                                                <a class="default-btn" href="/checkout">checkout</a>
+                                            </div>
+                                            <div>
+                                                <form action="/clear-cart" method="post">
+                                                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                                    <button class="button--link">Clear Cart</button>
+                                                </form>
+                                            </div>
+                                        <% } else { %>
+                                            <div style="display: flex;align-items: center;justify-content: center;height: 100px;">
+                                                <h5>Cart is empty</h5>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <!--Cart info End -->
+                        <div>
+                            <% if (user) { %>
+                                <a href="/profile" class='navbar-icon-button'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24"/>
+                                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+                                        </g>
+                                    </svg>
+                                </a>
+                            <% } else { %>
+                                <a href="/signin" class='navbar-icon-button'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <rect fill="#000000" opacity="0.5" transform="translate(9.000000, 12.000000) rotate(-270.000000) translate(-9.000000, -12.000000) " x="8" y="6" width="2" height="12" rx="1"/>
+                                            <path d="M20,7.00607258 C19.4477153,7.00607258 19,6.55855153 19,6.00650634 C19,5.45446114 19.4477153,5.00694009 20,5.00694009 L21,5.00694009 C23.209139,5.00694009 25,6.7970243 25,9.00520507 L25,15.001735 C25,17.2099158 23.209139,19 21,19 L9,19 C6.790861,19 5,17.2099158 5,15.001735 L5,8.99826498 C5,6.7900842 6.790861,5 9,5 L10.0000048,5 C10.5522896,5 11.0000048,5.44752105 11.0000048,5.99956624 C11.0000048,6.55161144 10.5522896,6.99913249 10.0000048,6.99913249 L9,6.99913249 C7.8954305,6.99913249 7,7.89417459 7,8.99826498 L7,15.001735 C7,16.1058254 7.8954305,17.0008675 9,17.0008675 L21,17.0008675 C22.1045695,17.0008675 23,16.1058254 23,15.001735 L23,9.00520507 C23,7.90111468 22.1045695,7.00607258 21,7.00607258 L20,7.00607258 Z" fill="#000000" fill-rule="nonzero" opacity="0.5" transform="translate(15.000000, 12.000000) rotate(-90.000000) translate(-15.000000, -12.000000) "/>
+                                            <path d="M16.7928932,9.79289322 C17.1834175,9.40236893 17.8165825,9.40236893 18.2071068,9.79289322 C18.5976311,10.1834175 18.5976311,10.8165825 18.2071068,11.2071068 L15.2071068,14.2071068 C14.8165825,14.5976311 14.1834175,14.5976311 13.7928932,14.2071068 L10.7928932,11.2071068 C10.4023689,10.8165825 10.4023689,10.1834175 10.7928932,9.79289322 C11.1834175,9.40236893 11.8165825,9.40236893 12.2071068,9.79289322 L14.5,12.0857864 L16.7928932,9.79289322 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.500000, 12.000000) rotate(-90.000000) translate(-14.500000, -12.000000) "/>
+                                        </g>
+                                    </svg>
+                                </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Header Bottom Account End -->

@@ -1,0 +1,90 @@
+<!--begin::List Widget 5-->
+<div class="card card-xxl-stretch mb-8">
+    <!--begin::Header-->
+    <div class="card-header align-items-center border-2 mt-4">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="fw-bolder mb-2 text-dark">Categories</span>
+        </h3>
+
+        <!-- begin::card toolbar -->
+        <div class="card-toolbar">
+            <!--begin::Menu-->
+            <a href="/<%= process.env.ADMIN_PANEL_PATH %>/category/add"
+                class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click"
+                data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end" title="Add Banner">
+                <!--begin::Svg Icon -->
+                <span class="svg-icon svg-icon-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1">
+                        <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"></rect>
+                        <rect fill="#000000" opacity="0.5"
+                            transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)"
+                            x="4" y="11" width="16" height="2" rx="1"></rect>
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+            </a>
+            <!--end::Menu-->
+        </div>
+        <!-- end::card toolbar -->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-5">
+        <table class='table table-hover table-row-gray-300 align-middle gs-0 gy-4'>
+            <thead>
+                <tr class="fw-bolder text-muted bg-light">
+                    <th class='min-w-150px ps-4 rounded-start'>Name</th>
+                    <th class='min-w-150px'>Slug</th>
+                    <th class='min-w-150px'>Label</th>
+                    <th class='min-w-150px rounded-end'>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (data.categories.length > 0) { %>
+                    <% data.categories.forEach(category => { %>
+                        <tr>
+                            <td class='rounded-start ps-4'><%= category.name %></td>
+                            <td><%= category.slug %></td>
+                            <td><%= category.label %></td>
+                            <td class='rounded-end'>
+                                <a href="/<%= process.env.ADMIN_PANEL_PATH %>/category/edit?categoryId=<%= category._id %>" class="btn btn-icon btn-bg-light btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.25" x="3" y="21" width="18" height="2" rx="1" fill="#191213"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.08576 11.5L3.58579 12C3.21071 12.375 3 12.8838 3 13.4142V17C3 18.1045 3.89543 19 5 19H8.58579C9.11622 19 9.62493 18.7893 10 18.4142L10.5 17.9142L4.08576 11.5Z" fill="#121319"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 10.0858L11.5858 4L18 10.4142L11.9142 16.5L5.5 10.0858Z" fill="#121319"/>
+                                            <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M18.1214 1.70705C16.9498 0.535476 15.0503 0.535476 13.8787 1.70705L13 2.58576L19.4142 8.99997L20.2929 8.12126C21.4645 6.94969 21.4645 5.0502 20.2929 3.87862L18.1214 1.70705Z" fill="#191213"/>
+                                            </svg>
+                                    </span>
+                                </a>
+                                <form action="/<%= process.env.ADMIN_PANEL_PATH %>/category/delete" class='d-inline-block delete-category'>
+                                    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                                    <input type="hidden" name="categoryId" value="<%= category._id %>" />
+                                    <button type="submit" class="btn btn-icon btn-bg-light-danger btn-active-light-danger w-30px h-30px w-md-40px h-md-40px">
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>
+                                                    <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </form>
+                                
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan='3' class='text-center py-4'>No Category Found</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end: List Widget 5-->

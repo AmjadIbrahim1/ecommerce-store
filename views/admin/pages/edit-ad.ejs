@@ -1,0 +1,106 @@
+<!--begin::List Widget 5-->
+<div class="card card-xxl-stretch mb-8">
+    <!--begin::Header-->
+    <div class="card-header align-items-center border-2 mt-4">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="fw-bolder mb-2 text-dark"><%= data.editMode ? 'Edit' : 'Add' %> Advertisement</span>
+        </h3>
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-5">
+        <% if (data.editMode && !data.ad) { %>
+            <h1>Advertisement Not Found</h1>
+        <% } else { %>
+            <form id="add-ad-form" action="<%= `/${process.env.ADMIN_PANEL_PATH}/ad/${data.editMode ? 'edit' : 'add'}` %>">
+                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-5">
+                        <% if (data.editMode) { %>
+                            <input type="hidden" name="adId" value="<%= data.ad._id %>">
+                        <% } %>
+                        <div class="fv-row mb-5">
+                            <label class="form-label">Category</label>
+                            <select name="slug" class="form-select form-select-solid" data-control="select2"
+                                >
+                                <option value="" selected="false">Select Category</option>
+                                <% if (data.categories?.length > 0) { %>
+                                    <% data.categories?.forEach(item => { %>
+                                        <option 
+                                            value="<%= item.slug %>" 
+                                            <%= item.slug === data.ad?.slug && 'selected' %>
+                                        >
+                                            <%= item.name %>
+                                        </option>
+                                        
+                                    <% }) %>
+                                <% } %>
+                            </select>
+                        </div>
+    
+                        <div class="form-check form-check-custom form-check-solid fv-row mb-5" id="category-image-size">
+                            <input name="imageSize" class="form-check-input" type="radio" id="small" value="small" <%= data.ad?.imageSize === 'small' && 'checked' %> />
+                            <label class="form-check-label me-4" for="small">Small</label>
+    
+                            <input name="imageSize" class="form-check-input" type="radio" id="large" value="large" <%= data.ad?.imageSize === 'large' && 'checked' %> />
+                            <label class="form-check-label" for="large">Large</label>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-6">
+                        <div class="fv-row mb-5">
+                            <label class="form-label">Extra Large (800x800)</label>
+                            <!--begin::Image input-->
+                            <div class="image-input image-input-empty w-100" data-kt-image-input="true"
+                                style="background-image: <%= data.ad ? `url(/${data.ad.image})` : `linear-gradient(to right, #009ef7ab, #00f7e0)` %>;background-position: center;background-size: cover;">
+                                <!--begin::Image preview wrapper-->
+                                <div class="h-200px image-input-wrapper w-100"
+                                    style="background-size: contain; background-position: center;"></div>
+                                <!--end::Image preview wrapper-->
+    
+                                <!--begin::Edit button-->
+                                <label
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                    title="Change avatar">
+                                    <i class="bi bi-pencil-fill fs-7"></i>
+    
+                                    <!--begin::Inputs-->
+                                    <input type="file" name="image" accept="image/*" />
+                                    <input type="hidden" name="avatar_remove" />
+                                    <!--end::Inputs-->
+                                </label>
+                                <!--end::Edit button-->
+    
+                                <!--begin::Remove button-->
+                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                    title="Remove avatar">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+                                <!--end::Remove button-->
+                            </div>
+                            <!--end::Image input-->
+                            <span>Max image size is 2 MB</span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            <div class="indicator-label">
+                                <%= data.editMode ? 'Edit' : 'Add' %> Category
+                            </div>
+                            <div class="indicator-progress">
+                                Submitting... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        <% } %>
+
+        
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end: List Widget 5-->

@@ -1,0 +1,96 @@
+<!--begin::List Widget 5-->
+<div class="card card-xxl-stretch mb-8">
+    <!--begin::Header-->
+    <div class="card-header align-items-center border-2 mt-4">
+        <h3 class="card-title align-items-start flex-column">
+            <span class="fw-bolder mb-2 text-dark">
+                <%= data.editMode ? 'Edit' : 'Add' %> Banner
+            </span>
+        </h3>
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-5">
+        <!-- begin::banner add || edit -->
+        <form action="/<%= process.env.ADMIN_PANEL_PATH %>/banner/<%= data.editMode ? 'edit' : 'add' %>"  id="edit-banner-form"
+            autocomplete="off">
+            <input type="hidden" name="_csrf" value="<%= _csrf %>">
+            <input type="hidden" name="bannerId" value="<%= data.banner?._id %>">
+
+            <div class="fv-row mb-5">
+                <label class="form-label">Heading</label>
+                <input type="text" class="form-control form-control-solid" placeholder="Heading" name="heading" value="<%= data.banner?.heading %>" />
+            </div>
+
+            <div class="row gy-10 gx-xl-10">
+                <div class="col-md-6">
+                    <div class="fv-row mb-5">
+                    <label class="form-label">Banner Text</label>
+                        <input type="text" class="form-control form-control-solid" placeholder="Text" name="text" value="<%= data.banner?.text %>" />
+                    </div>
+
+                    <div class="separator my-7"></div>
+
+                    <div class="fv-row mb-5">
+                        <label class="form-label">Category</label>
+                        <select class="form-select form-select-solid" name="productCategory" data-control="select2"
+                            data-placeholder="Select a category">
+                            <option></option>
+                            <% data.categories?.forEach(category => { %>
+                                <option value="<%= category.slug %>" <%= data.banner?.productCategory === category.slug && 'selected' %> ><%= category.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-0 mt-md-12">
+                    <div class="fv-row">
+                        <label class="form-label">Banner Image (1920x816)</label>
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty w-100" data-kt-image-input="true"
+                            style="background-image: <%= data.banner ? `url(/${data.banner.image})` : `linear-gradient(to right, #009ef7ab, #00f7e0)` %>;background-position: center;background-size: cover;">
+                            <!--begin::Image preview wrapper-->
+                            <div class="h-200px image-input-wrapper w-100"></div>
+                            <!--end::Image preview wrapper-->
+
+                            <!--begin::Edit button-->
+                            <label
+                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                data-kt-image-input-action="change" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                title="Change avatar">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+
+                                <!--begin::Inputs-->
+                                <input type="file" name="image" accept="image/*" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Edit button-->
+
+                            <!--begin::Remove button-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                data-kt-image-input-action="remove" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                title="Remove avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::Remove button-->
+                        </div>
+                        <!--end::Image input-->
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <div class="indicator-label">
+                    Submit Information
+                </div>
+                <div class="indicator-progress">
+                    Submitting... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                </div>
+            </button>
+        </form>
+        <!-- end::banner add || edit -->
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end: List Widget 5-->

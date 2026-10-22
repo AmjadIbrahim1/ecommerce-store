@@ -1,0 +1,15 @@
+# never upload secrets / local config
+.env
+.env.*
+!.env.example
+
+# dependencies & local tooling
+node_modules
+.vercel
+.freebuff
+.git
+
+# misc
+*.zip
+yarn-error.log
+todo.md

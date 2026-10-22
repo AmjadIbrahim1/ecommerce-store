@@ -1,0 +1,132 @@
+/* reset css */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #e2e2e2;
+    border-radius: 50px;
+}
+
+img {
+    max-width: 100%;
+}
+
+label {
+    user-select: none;
+}
+
+/* * ================================================================= */
+/* * theme customization */
+
+.timeline-label:before {
+    left: 71px;
+}
+
+.timeline-label .timeline-label {
+    width: 70px;
+}
+
+.menu-link {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    font-weight: 500;
+}
+
+/* * ================================================================= */
+/* * add new style */
+
+.timeline-label.timeline-nested {
+    width: auto;
+    margin-top: 10px;
+}
+
+/* banner */
+
+.banner-card {
+    position: relative;
+}
+
+.banner-card__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.banner-card__image {
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.banner-card__heading {
+    margin-bottom: 5px;
+}
+
+/* .banner-card__text {} */
+
+.banner-card__link {
+    color: inherit;
+}
+/* .banner-card__link:hover {
+    color: #009ef7;
+} */
+
+.banner-card:hover .banner-card__link {
+    color: #009ef7;
+}
+
+/* * product preview */
+.products {}
+.product {
+    padding: 15px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.product__image {}
+.product__name {
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+}
+.product__name a {
+    color: inherit;
+}
+.product__price {
+    font-size: 16px;
+    font-weight: 500;
+}
+.product__discount {
+    padding: 1px 6px;
+    background-color: #50cd89;
+    color: #fff;
+    border-radius: 3px;
+    margin: 0 15px;
+}
+.product__rating {
+    font-size: 16px;
+    font-weight: 600;
+}
+.product__flag {
+    margin-left: 5px;
+    font-size: 10px;
+    vertical-align: top;
+    color: #fff;
+    background-color: #009EF7;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+.product__short-description {}
+.product__tags {}
+.product__tags--item {
+    padding: 1px 6px;
+    background-color: #009ef7;
+    border-radius: 5px; 
+    color: #fff;
+    font-weight: 600;
+}

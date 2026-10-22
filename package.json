@@ -1,0 +1,54 @@
+{
+    "name": "amjad",
+    "version": "1.0.0",
+    "description": "Amjad — a full-featured e-commerce store (products, categories, cart, wishlist, checkout, reviews) built with Node.js, Express, EJS and MongoDB.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "lint": "eslint ./",
+        "lint:fix": "eslint ./ --fix",
+        "ejslint": "ejslint views"
+    },
+    "keywords": [
+        "amjad",
+        "ecommerce",
+        "express",
+        "mongodb",
+        "ejs",
+        "vercel"
+    ],
+    "author": "Amjad",
+    "license": "ISC",
+    "engines": {
+        "node": "22.x"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.19.0",
+        "connect-flash": "^0.1.1",
+        "connect-mongodb-session": "^3.1.0",
+        "cookie-parser": "^1.4.5",
+        "crypto-js": "^4.1.1",
+        "csurf": "^1.11.0",
+        "dotenv": "^10.0.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "express-validator": "^6.12.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^4.1.0",
+        "mongoose": "^6.0.6",
+        "multer": "^1.4.3",
+        "nodemailer": "^6.7.0",
+        "nodemon": "^2.0.15",
+        "sharp": "^0.29.0",
+        "slugify": "^1.6.0",
+        "stripe": "^8.184.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.24.2"
+    }
+}
